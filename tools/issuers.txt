@@ -1,0 +1,16 @@
+# These are Python regular expressions, one per line.
+# Capitalization is ignored when doing matches.
+Amazon
+Baltimore
+Comodo
+Cybertrust
+DigiCert
+Digital Signature Trust
+Entrust
+GlobalSign
+Go ?Daddy
+Google Trust Services
+Internet Security Research Group|ISRG
+Starfield Technologies
+USERTRUST
+VeriSign
