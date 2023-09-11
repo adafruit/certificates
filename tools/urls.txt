@@ -376,6 +376,8 @@ https://shopify.com
 https://shutterstock.com
 https://si.edu
 https://sina.com.cn
+# site.api.espn and others that use Let's Encrypt needs DST Root CA X3 when used with mbedTLS.
+https://site.api.espn.com
 https://sites.google.com
 https://sky.com
 https://skype.com

@@ -6,6 +6,10 @@ Comodo
 Cybertrust
 DigiCert
 Digital Signature Trust
+# Expired certificate which cross-signs a special ISRG Root X1 as supplied by servers using Let's Encrypt.
+# The normal ISRG Root X1 is not cross-signed. Needed because apparently mbedTLS does not properly handle
+# the supplied ISRG Root X1 as a trust anchor.
+DST Root CA X3
 Entrust
 GlobalSign
 Go ?Daddy
