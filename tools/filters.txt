@@ -15,6 +15,7 @@ GlobalSign
 Go ?Daddy
 Google Trust Services
 Internet Security Research Group|ISRG
+SSL.com Root Certification Authority RSA
 Starfield Technologies
 USERTRUST
 VeriSign
