@@ -21,6 +21,60 @@
 # Uses Actalis, which is rare.
 #https://huawei.com
 
+# API's and special
+# from https://github.com/tyeth/Adafruit_CircuitPython_ConnectionManager/blob/my-tests/examples/connectionmanager_ssltest.py
+https://admiraltyapi.azure-api.net
+https://aeroapi.flightaware.com
+https://aeroapi.flightaware.com
+https://airnowapi.org
+https://api.coindesk.com
+https://api.covidtracking.com
+https://api.developer.lifx.com
+https://api.fitbit.com
+https://api.github.com
+https://api.hackaday.io
+https://api.hackster.io
+https://api.met.no
+https://api.nasa.gov
+https://api.nytimes.com
+https://api.open-meteo.com
+https://api.openai.com
+https://api.openweathermap.org
+https://api.purpleair.com
+https://api.spacexdata.com
+https://api.thecatapi.com
+https://api.thingiverse.com
+https://api.thingspeak.com
+https://api.tidesandcurrents.noaa.gov
+https://api.twitter.com
+https://api.wordnik.com
+https://certification.oshwa.org
+https://certificationapi.oshwa.org
+https://chat.openai.com
+https://covidtracking.com
+https://discord.com
+https://enviro.epa.gov
+https://flightaware.com
+https://hosted.weblate.org
+https://id.twitch.tv
+https://io.adafruit.com
+https://jwst.nasa.gov
+https://management.azure.com
+https://na1.api.riotgames.com
+https://oauth2.googleapis.com
+https://openaccess-api.clevelandart.org
+https://opensky-network.org
+https://opentdb.com
+https://raw.githubusercontent.com
+https://site.api.espn.com
+https://spreadsheets.google.com
+https://valid-isrgrootx2.letsencrypt.org
+https://www.alphavantage.co
+https://www.nhc.noaa.gov
+https://www.reddit.com
+https://youtube.googleapis.com
+
+# Conventional sites
 https://000webhost.com
 https://20minutos.es
 https://4shared.com

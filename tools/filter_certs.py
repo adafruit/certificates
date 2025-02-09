@@ -28,13 +28,20 @@ import re
     show_default=True,
 )
 @click.option(
-    "--filters",
+    "--include",
     help="file of cert O and CN names to select; one regexp per line; substring match; case-insensitive; # comments OK",
-    default="filters.txt",
+    default="include.txt",
     type=click.File("r"),
     show_default=True,
 )
-def run(sources, out, filters):
+@click.option(
+    "--exclude",
+    help="file of cert O and CN names to exclude (after --include); one regexp per line; substring match; case-insensitive; # comments OK",
+    default="exclude.txt",
+    type=click.File("r"),
+    show_default=True,
+)
+def run(sources, out, include, exclude):
     concatenated_pem = b""
     for source in sources:
         if source.startswith("http"):
@@ -45,21 +52,26 @@ def run(sources, out, filters):
 
     # Read a list of regexps to substr-match against Issuer O and CN names.
 
-    filter_patterns = []
-    for line in filters.readlines():
-        line = line.strip()
-        if line.startswith("#"):
-            continue
-        filter_patterns.append(re.compile(line, flags=re.IGNORECASE))
+    def read_patterns(f):
+        patterns = []
+        for line in f.readlines():
+            line = line.strip()
+            if line.startswith("#"):
+                continue
+
+            patterns.append(re.compile(line, flags=re.IGNORECASE))
+        return patterns
+
+    include_patterns = read_patterns(include)
+    exclude_patterns = read_patterns(exclude)
 
     # Read in all the certs at once.
     input_certs = cryptography.x509.load_pem_x509_certificates(concatenated_pem)
 
-    # For each cert, see if its O or CN name matches against the list of filter patterns.
+    # For each cert, see if its O or CN name matches against the list of include and exclude patterns.
 
     for cert in input_certs:
         issuer = cert.issuer
-        print(issuer)
         org_name_attributes = issuer.get_attributes_for_oid(
             NameOID.ORGANIZATION_NAME
         )
@@ -73,13 +85,21 @@ def run(sources, out, filters):
         if not any((org_name, common_name)):
             raise ValueError(f"no O or CN available for {issuer}")
 
-        passes_filters = False
-        for pattern in filter_patterns:
+        include_cert = False
+        for pattern in include_patterns:
             if pattern.search(org_name) or pattern.search(common_name):
-                passes_filters = True
+                include_cert = True
                 break
 
-        if passes_filters:
+        if include_cert:
+            for pattern in exclude_patterns:
+                print(pattern, org_name, common_name)
+                if pattern.search(org_name) or pattern.search(common_name):
+                    print("EXCLUDED", cert)
+                    include_cert = False
+                    break
+
+        if include_cert:
             # Add a comment with the O and CN names.
             out.write(f"# O={org_name}, CN={common_name}\n".encode("ascii"))
             out.write(cert.public_bytes(Encoding.PEM))
