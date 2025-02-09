@@ -1,0 +1,3 @@
+# Exclude certificates whose O or CN name matches these Python regular expressions, one per line.
+# Capitalization is ignored when doing matches.
+DST Root CA X3
