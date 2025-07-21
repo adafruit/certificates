@@ -12,7 +12,7 @@ from requests.exceptions import SSLError, RequestException
 @click.option(
     "--certs",
     help="certificate bundle (.pem file)",
-    default="roots.pem",
+    default="../data/roots-full.pem",
     type=click.Path(exists=True, dir_okay=False),
     show_default=True,
 )

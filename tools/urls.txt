@@ -27,7 +27,6 @@ https://admiraltyapi.azure-api.net
 https://aeroapi.flightaware.com
 https://aeroapi.flightaware.com
 https://airnowapi.org
-https://api.coindesk.com
 https://api.covidtracking.com
 https://api.developer.lifx.com
 https://api.fitbit.com
@@ -68,6 +67,7 @@ https://opentdb.com
 https://raw.githubusercontent.com
 https://site.api.espn.com
 https://spreadsheets.google.com
+https://ssd-api.jpl.nasa.gov/
 https://valid-isrgrootx2.letsencrypt.org
 https://www.alphavantage.co
 https://www.nhc.noaa.gov
@@ -105,9 +105,7 @@ https://amazon.fr
 https://amazon.in
 https://android.com
 https://aol.com
-https://ap.org
 https://apache.org
-https://api.coindesk.com
 https://api.hackster.io
 https://api.open-meteo.com
 https://api.spacexdata.com
@@ -138,14 +136,12 @@ https://bp1.blogger.com
 https://brandbucket.com
 https://britannica.com
 https://businessinsider.com
-https://businessinsider.com.au
 https://buzzfeed.com
 https://ca.gov
 https://cam.ac.uk
 https://cambridge.org
 https://canada.ca
 https://canva.com
-https://cbc.ca
 https://cbsnews.com
 https://cdc.gov
 https://certificationapi.oshwa.org
@@ -391,10 +387,8 @@ https://play.google.com
 https://www.playstation.com
 https://plesk.com
 https://plos.org
-https://politico.com
 https://prestashop.com
 https://prezi.com
-https://princeton.edu
 https://prnewswire.com
 https://psu.edu
 https://psychologytoday.com
@@ -422,7 +416,6 @@ https://scientificamerican.com
 https://scribd.com
 https://search.google.com
 https://search.yahoo.com
-https://secureserver.net
 https://sedo.com
 https://sendspace.com
 https://sfgate.com
@@ -439,7 +432,6 @@ https://slate.com
 https://slideshare.net
 https://smh.com.au
 https://snapchat.com
-https://so-net.ne.jp
 https://softonic.com
 https://softpedia.com
 https://soratemplates.com
@@ -476,7 +468,7 @@ https://themeforest.net
 https://thenextweb.com
 https://thestar.com
 https://thesun.co.uk
-https://thetimes.co.uk
+https://thetimes.com
 https://theverge.com
 https://thoughtco.com
 https://time.com
@@ -506,7 +498,6 @@ https://w3.org
 https://wa.me
 https://walmart.com
 https://washington.edu
-https://washingtonpost.com
 https://weather.com
 https://webmd.com
 https://weibo.com
@@ -526,7 +517,9 @@ https://wordpress.org
 https://worldbank.org
 https://wp.com
 https://wsj.com
+https://www.ap.org
 https://www.canalblog.com
+https://www.cbc.ca
 https://www.ebay.com
 https://www.gov.uk
 https://www.icann.org
@@ -534,8 +527,12 @@ https://www.livejournal.com
 https://www.nasa.gov
 https://www.nih.gov
 https://www.over-blog.com
+https://www.politico.com
+https://www.princeton.edu
+https://www.so-net.ne.jp
 https://www.un.org
 https://www.unesco.org
+https://www.washingtonpost.com
 https://www.weebly.com
 https://www.wikipedia.org
 https://www.wix.com
