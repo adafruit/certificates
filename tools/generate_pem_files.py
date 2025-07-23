@@ -21,10 +21,17 @@ import re
     show_default=True,
 )
 @click.option(
-    "--out",
-    default="roots.pem",
+    "--out-full",
+    default="../data/roots-full.pem",
+    help="full unfiltered combined .pem file",
+    type=click.File("w"),
+    show_default=True,
+)
+@click.option(
+    "--out-filtered",
+    default="../data/roots-filtered.pem",
     help="filtered combined .pem file",
-    type=click.File("wb"),
+    type=click.File("w"),
     show_default=True,
 )
 @click.option(
@@ -41,7 +48,7 @@ import re
     type=click.File("r"),
     show_default=True,
 )
-def run(sources, out, include, exclude):
+def run(sources, out_full, out_filtered, include, exclude):
     concatenated_pem = b""
     for source in sources:
         if source.startswith("http"):
@@ -99,10 +106,16 @@ def run(sources, out, include, exclude):
                     include_cert = False
                     break
 
+        # Filtered output includes only certificates that pass through the filters.
         if include_cert:
             # Add a comment with the O and CN names.
-            out.write(f"# O={org_name}, CN={common_name}\n".encode("ascii"))
-            out.write(cert.public_bytes(Encoding.PEM))
+            out_filtered.write(f"# O={org_name}, CN={common_name}\n")
+            out_filtered.write(cert.public_bytes(Encoding.PEM).decode("ascii"))
+
+        # Unfiltered output includes all certificates.
+        print(org_name, common_name)
+        out_full.write(f"# O={org_name}, CN={common_name}\n")
+        out_full.write(cert.public_bytes(Encoding.PEM).decode("ascii"))
 
 
 if __name__ == "__main__":
