@@ -1,0 +1,61 @@
+# SPDX-FileCopyrightText: 2026 Dan Halbert for Adafruit Industries LLC
+#
+# SPDX-License-Identifier: MIT
+
+name: Update certificates
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Regenerate certificate bundles
+        working-directory: tools
+        run: python generate_pem_files.py
+
+      - name: Check for changes
+        id: diff
+        run: git diff --quiet data/ || echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Test site coverage
+        if: steps.diff.outputs.changed == 'true'
+        working-directory: tools
+        run: |
+          body="$RUNNER_TEMP/pr-body.md"
+          echo "Regenerated from the upstream certificate list." > "$body"
+          for bundle in full filtered; do
+            fails=$(python test_site_coverage.py --certs "../data/roots-$bundle.pem" | grep '^FAIL ' | sed 's/^FAIL /- /' || true)
+            {
+              echo
+              echo "#### Site coverage failures: \`roots-$bundle.pem\`"
+              echo "${fails:-none}"
+            } >> "$body"
+          done
+
+      - name: Create pull request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: update-certs
+          delete-branch: true
+          add-paths: data/
+          commit-message: Update certificates from upstream
+          title: Update certificates from upstream
+          body-path: ${{ runner.temp }}/pr-body.md
