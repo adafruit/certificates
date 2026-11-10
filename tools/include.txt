@@ -11,6 +11,7 @@ Go ?Daddy
 Google Trust Services
 IdenTrust
 Internet Security Research Group|ISRG
+Sectigo
 SSL\.com
 Starfield Technologies
 USERTRUST
