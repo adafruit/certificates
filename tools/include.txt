@@ -1,11 +1,8 @@
 # Include certificates whose O or CN name matches these Python regular expressions, one per line.
 # Capitalization is ignored when doing matches.
 Amazon
-Baltimore
 Comodo
 DigiCert
-Digital Signature Trust
-Entrust
 GlobalSign
 Go ?Daddy
 Google Trust Services
@@ -15,4 +12,3 @@ Sectigo
 SSL\.com
 Starfield Technologies
 USERTRUST
-VeriSign
